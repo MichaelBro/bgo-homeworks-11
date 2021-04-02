@@ -1,0 +1,50 @@
+
+### Error: 502 Bad Gateway
+GET http://localhost:9999/
+###
+
+
+### Error: Wrong uid format
+GET http://localhost:9999/getCards
+###
+GET http://localhost:9999/getCards?uid=0
+###
+
+
+### "result": "No cards"
+GET http://localhost:9999/getCards?uid=999
+###
+
+
+### "result": "No cards"
+GET http://localhost:9999/getCards?uid=99
+###
+
+
+### Error: Wrong params
+POST http://localhost:9999/addCard
+###
+
+
+### Error: uid not have card permission denied
+POST http://localhost:9999/addCard
+Content-Type: application/x-www-form-urlencoded
+
+uid=99&type=real
+###
+
+
+### add new  user and new card  // "result": "Ok"
+POST http://localhost:9999/addCard
+Content-Type: application/x-www-form-urlencoded
+
+uid=1&type=real&new=y
+###
+
+
+### add new card //   "result": "Ok"   if added user uid = 1
+POST http://localhost:9999/addCard
+Content-Type: application/x-www-form-urlencoded
+
+uid=1&type=virtual
+###
